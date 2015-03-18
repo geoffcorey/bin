@@ -9,11 +9,13 @@ usage()
     echo "./bootstrap.sh"
     echo "\t-h --help"
     echo "\t--golang"
-    echo "\t--nodejs"
-    echo "\t--x11"
-    echo "\t--mysql"
-    echo "\t--redis"
     echo "\t--mongodb"
+    echo "\t--mysql"
+    echo "\t--newvim"
+    echo "\t--nodejs"
+    echo "\t--redis"
+    echo "\t--skip-system-install"
+    echo "\t--x11"
     echo ""
 }
 
@@ -27,7 +29,6 @@ install()
 		exit 1
 		;;
 	esac
-	neoVim
 }
 
 ubuntuInstall()  
@@ -73,11 +74,13 @@ ubuntuInstall()
 neoVim()
 {
     pip2 install --user neovim
-    curl ~/.nvim/autoload/plug.vim --create-dirs \
+
+    curl -fLo ~/.nvim/autoload/plug.vim --create-dirs \
       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     nvim +PlugInstall 
 }
 
+SKIP="no"
 GOLANG="no"
 NODEJS="no"
 X11="no"
@@ -86,6 +89,7 @@ REDIS="no"
 MYSQL="no"
 MONGODB="no" 
 RUBY="no" 
+NEOVIM="no"
 while [ "$1" != "" ]; do
     PARAM=`echo $1 | awk -F= '{print $1}'`
     VALUE=`echo $1 | awk -F= '{print $2}'`
@@ -93,6 +97,9 @@ while [ "$1" != "" ]; do
         -h | --help)
             usage
             exit
+            ;;
+        --skip-system-install)
+            SKIP="yes" 
             ;;
         --golang)
             GOLANG="yes" 
@@ -118,6 +125,9 @@ while [ "$1" != "" ]; do
         --mysql)
             MYSQL="yes"
             ;;
+        --neovim)
+            NEOVIM="yes"
+            ;;
         *)
             echo "ERROR: unknown parameter \"$PARAM\""
             usage
@@ -127,4 +137,10 @@ while [ "$1" != "" ]; do
     shift
 done
 
-install()
+
+if [ $SKIP = no ]; then
+	install
+fi
+if [ $NEOVIM = yes ]; then
+	neoVim
+fi
