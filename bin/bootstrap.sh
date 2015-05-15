@@ -11,7 +11,7 @@ usage()
     echo "\t--golang"
     echo "\t--mongodb"
     echo "\t--mysql"
-    echo "\t--newvim"
+    echo "\t--neovim"
     echo "\t--nodejs"
     echo "\t--redis"
     echo "\t--skip-system-install"
@@ -47,9 +47,11 @@ ubuntuInstall()
         sudo tar -C /usr/local -xzf /tmp/go1.4.linux-amd64.tar.gz
     fi
     if [ $X11 = yes ]; then
+       wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+       sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
        sudo apt-get --allow-unauthenticated install sur5r-keyring 
        sudo apt-get update
-       sudo apt-get install i3 conky acpi pactl xbacklight google-chrome-stable terminator
+       sudo apt-get install i3 conky acpi xbacklight google-chrome-stable
     fi
     if [ $AWS = yes ]; then
 	sudo pip install awscli
