@@ -38,9 +38,10 @@ ubuntuInstall()
     sudo apt-get update
     sudo apt-get install vcsh mr neovim git zsh curl git build-essential libssl-dev ssh python-pip zsh silversearcher-ag cmake python2.7-dev figlet weechat wget mongodb-clients redis-tools mysql-client ctags
     if [ $NODEJS = yes ]; then
-	curl https://raw.githubusercontent.com/creationix/nvm/v0.24.0/install.sh | bash
-	source ~/.nvm/nvm.sh
+			curl https://raw.githubusercontent.com/creationix/nvm/v0.24.0/install.sh | bash
+			source ~/.nvm/nvm.sh
         nvm install stable 
+				pip install neovim
     fi
     if [ $GOLANG = yes ]; then
         wget https://storage.googleapis.com/golang/go1.4.linux-amd64.tar.gz
@@ -54,21 +55,24 @@ ubuntuInstall()
        sudo apt-get install i3 conky acpi xbacklight google-chrome-stable
     fi
     if [ $AWS = yes ]; then
-	sudo pip install awscli
+			sudo pip install awscli
     fi
     if [ $MYSQL = yes ]; then
-	sudo apt-get install mysql 
+			sudo apt-get install mysql 
     fi
     if [ $REDIS = yes ]; then
-	sudo apt-get install redis 
+			sudo apt-get install redis 
     fi
     if [ $MONGODB = yes ]; then
-	sudo apt-get install mongodb 
+			sudo apt-get install mongodb 
     fi
     if [ $RUBY = yes ]; then
         gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
         curl -sSL https://get.rvm.io | bash -s stable --ruby
-	source ~/.rvm/scripts/rvm
+				source ~/.rvm/scripts/rvm
+				rvm install ruby-2.2.1
+				rvm use ruby-2.2.1 --default
+				rvm user gemsets
     fi
 }
 
