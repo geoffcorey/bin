@@ -17,6 +17,7 @@ usage()
     echo "\t--nodejs"
     echo "\t--redis"
     echo "\t--skip-system-install"
+    echo "\t--vagrant"
     echo "\t--x11"
     echo ""
 }
@@ -45,6 +46,10 @@ ubuntuInstall()
         nvm install stable 
 				pip install neovim
     fi
+		if [ $VAGRANT = yes ]; then
+			sudo apt-get install vagrant
+			sudo vagrant plugin install vagrant-triggers
+		fi
 		if [ $DOCKER = yes ]; then
 			wget -q0 https://get.docker.com/ | sh
 		fi
@@ -65,6 +70,10 @@ ubuntuInstall()
        sudo apt-get --allow-unauthenticated install sur5r-keyring 
        sudo apt-get update
        sudo apt-get install i3 conky acpi xbacklight google-chrome-stable
+    fi
+    if [ $DEIS = yes ]; then
+			curl -sSL http://deis.io/deis-cli/install.sh | sh
+			mv deis ~/bin
     fi
     if [ $AWS = yes ]; then
 			sudo pip install awscli
@@ -99,17 +108,19 @@ neoVim()
 }
 
 SKIP="no"
-GOLANG="no"
+AWS="no"
+DEIS="no"
 DOCKER="no"
 ETCD="no"
-NODEJS="no"
-X11="no"
-AWS="no"
-REDIS="no"
+GOLANG="no"
 MYSQL="no"
 MONGODB="no" 
-RUBY="no" 
 NEOVIM="no"
+NODEJS="no"
+REDIS="no"
+RUBY="no" 
+VAGRANT="no"
+X11="no"
 while [ "$1" != "" ]; do
     PARAM=`echo $1 | awk -F= '{print $1}'`
     VALUE=`echo $1 | awk -F= '{print $2}'`
@@ -127,12 +138,20 @@ while [ "$1" != "" ]; do
         --docker)
             DOCKER="yes" 
             ;;
+				--deis)
+						DEIS="yes"
+						ETCD="yes"
+						DOCKER="yes"
+						;;
         --etcd)
             ETCD="yes" 
             DOCKER="yes" 
             ;;
         --nodejs)
             NODEJS="yes"
+            ;;
+        --vagrant)
+            VAGRANT="yes"
             ;;
         --ruby)
             RUBY="yes"
