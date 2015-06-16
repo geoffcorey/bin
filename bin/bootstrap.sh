@@ -8,6 +8,8 @@ usage()
     echo ""
     echo "./bootstrap.sh"
     echo "\t-h --help"
+    echo "\t--docker"
+    echo "\t--etcd"
     echo "\t--golang"
     echo "\t--mongodb"
     echo "\t--mysql"
@@ -43,10 +45,20 @@ ubuntuInstall()
         nvm install stable 
 				pip install neovim
     fi
+		if [ $DOCKER = yes ]; then
+			wget -q0 https://get.docker.com/ | sh
+		fi
     if [ $GOLANG = yes ]; then
-        wget https://storage.googleapis.com/golang/go1.4.linux-amd64.tar.gz
-        sudo tar -C /usr/local -xzf /tmp/go1.4.linux-amd64.tar.gz
+        wget https://storage.googleapis.com/golang/go1.4.2.linux-amd64.tar.gz
+        tar -C ~/ -xzf /tmp/go1.4.2.linux-amd64.tar.gz
     fi
+		if [ $ETCD = yes]; then
+			curl -L  https://github.com/coreos/etcd/releases/download/v2.0.11/etcd-v2.0.11-linux-amd64.tar.gz -o etcd-v2.0.11-linux-amd64.tar.gz
+			tar xzvf etcd-v2.0.11-linux-amd64.tar.gz
+			cd etcd-v2.0.11-linux-amd64
+			cp etcdctl ~/bin
+			cp etcd ~/bin
+		fi
     if [ $X11 = yes ]; then
        wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
        sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
@@ -88,6 +100,8 @@ neoVim()
 
 SKIP="no"
 GOLANG="no"
+DOCKER="no"
+ETCD="no"
 NODEJS="no"
 X11="no"
 AWS="no"
@@ -109,6 +123,13 @@ while [ "$1" != "" ]; do
             ;;
         --golang)
             GOLANG="yes" 
+            ;;
+        --docker)
+            DOCKER="yes" 
+            ;;
+        --etcd)
+            ETCD="yes" 
+            DOCKER="yes" 
             ;;
         --nodejs)
             NODEJS="yes"
