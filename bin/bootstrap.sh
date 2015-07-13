@@ -39,7 +39,7 @@ ubuntuInstall()
     echo "Ubuntu install"
     sudo add-apt-repository ppa:neovim-ppa/unstable
     sudo apt-get update
-    sudo apt-get install vcsh mr neovim git zsh curl git build-essential libssl-dev ssh python-pip zsh silversearcher-ag cmake python2.7-dev figlet weechat wget mongodb-clients redis-tools mysql-client ctags taskwarrior
+    sudo apt-get install vcsh mr neovim git zsh curl git build-essential libssl-dev ssh python-pip zsh silversearcher-ag cmake python2.7-dev figlet weechat wget mongodb-clients redis-tools mysql-client ctags taskwarrior jq
     if [ $NODEJS = yes ]; then
 			curl https://raw.githubusercontent.com/creationix/nvm/v0.24.0/install.sh | bash
 			source ~/.nvm/nvm.sh
