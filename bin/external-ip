@@ -15,7 +15,8 @@ fi
 cachedIp=$(cat $cacheFile)
 if [ -z "$cachedIp" ] || [ "$1" == "-f" ]
 then
-    externalIp=$(curl -s ifconfig.me)
+    #/externalIp=$(curl -s ifconfig.me)
+		externalIp="$(dig +short myip.opendns.com @resolver1.opendns.com)"
 fi
 
 if [ "$1" == "-f" ]
