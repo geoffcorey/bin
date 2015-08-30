@@ -81,6 +81,12 @@ ubuntuInstall()
        sudo apt-get --allow-unauthenticated install sur5r-keyring 
        sudo apt-get update
        sudo apt-get install i3 conky acpi xbacklight google-chrome-stable
+			 sudo mkdir -p /usr/share/fonts/truetype/font-install
+			 mkdir -p ~/fonts
+			 cd ~/fonts
+			 wget -q https://github.com/chrissimpkins/Hack/releases/download/v2.010/Hack-v2_010-ttf.zip
+			 unzip Hack*ttf.zip
+			 ~/bin/font-install
     fi
     if [ $DEIS = yes ]; then
       curl -sSL http://deis.io/deis-cli/install.sh | sh
