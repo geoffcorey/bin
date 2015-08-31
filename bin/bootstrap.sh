@@ -18,6 +18,7 @@ usage()
     echo "\t--neovim"
     echo "\t--nodejs"
     echo "\t--redis"
+    echo "\t--rethinkdb"
     echo "\t--skip-system-install"
     echo "\t--vagrant"
     echo "\t--x11"
@@ -75,6 +76,12 @@ ubuntuInstall()
     if [ $GCLOUD = yes ]; then
       curl https://sdk.cloud.google.com | bash
     fi
+		if [ $RETHINKDB = yes ]; then
+			source /etc/lsb-release && echo "deb http://download.rethinkdb.com/apt $DISTRIB_CODENAME main" | sudo tee /etc/apt/sources.list.d/rethinkdb.list
+			wget -qO- http://download.rethinkdb.com/apt/pubkey.gpg | sudo apt-key add -
+			sudo apt-get update
+			sudo apt-get install rethinkdb
+		fi
     if [ $X11 = yes ]; then
        wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
        sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
@@ -137,6 +144,7 @@ MONGODB="no"
 NEOVIM="no"
 NODEJS="no"
 REDIS="no"
+RETHINKDB="no"
 RUBY="no" 
 VAGRANT="no"
 X11="no"
@@ -179,6 +187,9 @@ while [ "$1" != "" ]; do
             ;;
         --vagrant)
             VAGRANT="yes"
+            ;;
+        --rethinkdb)
+            RETHINKDB="yes"
             ;;
         --ruby)
             RUBY="yes"
