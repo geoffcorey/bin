@@ -43,9 +43,9 @@ ubuntuInstall()
     sudo add-apt-repository ppa:neovim-ppa/unstable
     sudo apt-get update
     sudo apt-get install vcsh mr neovim git zsh curl git build-essential \
-			libssl-dev ssh python-pip zsh silversearcher-ag cmake python2.7-dev \
-			figlet weechat wget mongodb-clients redis-tools mysql-client ctags \
-			taskwarrior jq ngrep dstat multitail mtr lynx
+      libssl-dev ssh python-pip zsh silversearcher-ag cmake python2.7-dev \
+      figlet weechat wget mongodb-clients redis-tools mysql-client ctags \
+      taskwarrior jq ngrep dstat multitail mtr lynx
     if [ $NODEJS = yes ]; then
       curl https://raw.githubusercontent.com/creationix/nvm/v0.24.0/install.sh | bash
       source ~/.nvm/nvm.sh
@@ -76,24 +76,24 @@ ubuntuInstall()
     if [ $GCLOUD = yes ]; then
       curl https://sdk.cloud.google.com | bash
     fi
-		if [ $RETHINKDB = yes ]; then
-			source /etc/lsb-release && echo "deb http://download.rethinkdb.com/apt $DISTRIB_CODENAME main" | sudo tee /etc/apt/sources.list.d/rethinkdb.list
-			wget -qO- http://download.rethinkdb.com/apt/pubkey.gpg | sudo apt-key add -
-			sudo apt-get update
-			sudo apt-get install rethinkdb
-		fi
+    if [ $RETHINKDB = yes ]; then
+      source /etc/lsb-release && echo "deb http://download.rethinkdb.com/apt $DISTRIB_CODENAME main" | sudo tee /etc/apt/sources.list.d/rethinkdb.list
+      wget -qO- http://download.rethinkdb.com/apt/pubkey.gpg | sudo apt-key add -
+      sudo apt-get update
+      sudo apt-get install rethinkdb
+    fi
     if [ $X11 = yes ]; then
        wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
        sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
        sudo apt-get --allow-unauthenticated install sur5r-keyring 
        sudo apt-get update
        sudo apt-get install i3 conky acpi xbacklight google-chrome-stable
-			 sudo mkdir -p /usr/share/fonts/truetype/font-install
-			 mkdir -p ~/fonts
-			 cd ~/fonts
-			 wget -q https://github.com/chrissimpkins/Hack/releases/download/v2.010/Hack-v2_010-ttf.zip
-			 unzip Hack*ttf.zip
-			 ~/bin/font-install
+       sudo mkdir -p /usr/share/fonts/truetype/font-install
+       mkdir -p ~/fonts
+       cd ~/fonts
+       wget -q https://github.com/chrissimpkins/Hack/releases/download/v2.010/Hack-v2_010-ttf.zip
+       unzip Hack*ttf.zip
+       ~/bin/font-install
     fi
     if [ $DEIS = yes ]; then
       curl -sSL http://deis.io/deis-cli/install.sh | sh
