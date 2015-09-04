@@ -124,11 +124,13 @@ ubuntuInstall()
 # NeoVim Setup
 neoVim()
 {
-    pip2 install --user neovim
+    pip install --user neovim
 
     curl -fLo ~/.nvim/autoload/plug.vim --create-dirs \
       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     nvim +PlugInstall 
+		cd ~/.nvim/plugged/YouCompleteMe
+		./install.sh --clang-completer --gocode-completer
 }
 
 SKIP="no"
