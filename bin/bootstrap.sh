@@ -60,6 +60,7 @@ ubuntuInstall()
       wget -q0 https://get.docker.com/ | bash
     fi
     if [ $GOLANG = yes ]; then
+			  sudo apt-get install bzr subversion mercurial
         wget https://storage.googleapis.com/golang/go1.4.2.linux-amd64.tar.gz
         tar -C ~/ -xzf /tmp/go1.4.2.linux-amd64.tar.gz
     fi
