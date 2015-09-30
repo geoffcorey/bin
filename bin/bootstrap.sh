@@ -61,8 +61,8 @@ ubuntuInstall()
     fi
     if [ $GOLANG = yes ]; then
 			  sudo apt-get install bzr subversion mercurial
-        wget https://storage.googleapis.com/golang/go1.4.2.linux-amd64.tar.gz
-        tar -C ~/ -xzf /tmp/go1.4.2.linux-amd64.tar.gz
+        wget https://storage.googleapis.com/golang/go1.5.1.linux-amd64.tar.gz
+        tar -C ~/ -xzf /tmp/go1.5.1.linux-amd64.tar.gz
     fi
     if [ $ETCD = yes ]; then
       curl -L  https://github.com/coreos/etcd/releases/download/v2.1.0-rc.0/etcd-v2.1.0-rc.0-linux-amd64.tar.gz -o etcd-v2.1.0-rc.0-linux-amd64.tar.gz

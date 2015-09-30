@@ -1,0 +1,43 @@
+# AUTHOR/Source : /u/Holger_Will
+set_prompt (){
+red="\[\033[38;5;1m\]"
+green="\[\033[38;5;10m\]"
+yellow="\[\033[38;5;11m\]"
+grape="\[\033[38;5;92m\]"
+strawberry="\[\033[38;5;9m\]"
+mellon="\[\033[38;5;162m\]"
+name="$red🍒$space$green🍏$space$red🍓$space$color4"
+host="$color3\h$color4"
+path="$color5\w$color4"
+reset="\[\e[0m\]"
+blink="\[\e[5;33m\]"
+symbol[0]="$red🍒 $reset"
+symbol[1]="$green🍏 $reset"
+symbol[2]="$strawberry🍓 $reset"
+symbol[3]="$grape🍇 $reset"
+symbol[4]="$mellon🍉 $reset"
+n1=$(($RANDOM%5))
+n2=$(($RANDOM%5))
+n3=$(($RANDOM%5))
+win=0
+winst=""
+if ((($n1==$n2) || ($n1==$n3) || ($n2==$n3)));
+    then
+    win=10;
+    CASH=$(($CASH+$win))
+    winst=" $yellow⭐$reset"
+fi
+ 
+if ((($n1==$n2) && ($n1==$n3)));
+    then
+    win=$((100*($n1+1)));
+    CASH=$(($CASH+$win))
+    winst=" $yellow🌟 $win🌟 $reset"
+fi
+ 
+ 
+CASH=$(($CASH-10))
+PS1="[${symbol[$n1]}${symbol[$n2]}${symbol[$n3]}]$winst $green💵 $reset:$yellow$CASH$reset $yellow📂 $path ⏩ $reset"
+}    
+CASH=1000  
+PROMPT_COMMAND='set_prompt'
