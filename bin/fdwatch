@@ -1,0 +1,1 @@
+watch "lsof -c ${1} | wc -l"

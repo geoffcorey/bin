@@ -29,6 +29,7 @@ done
 function getandplay () {
 echo "${boldtext}Retrieving ${stationnames[$selection]}${normaltext}"
 $WGET -q ${baseurl}/${stationslist[$selection]}.pls -O ${tmpdir}somafm.pls
+echo "$WGET -q ${baseurl}/${stationslist[$selection]}.pls -O ${tmpdir}somafm.pls"
 ${PLAYER} ${tmpdir}somafm.pls < /dev/null 2> /dev/null &
 playerpid=$!
 }
