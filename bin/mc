@@ -1,0 +1,3 @@
+#!/bin/sh
+cd ~/Downloads
+java -jar Minecraft.jar >/dev/null 2>&1 &
