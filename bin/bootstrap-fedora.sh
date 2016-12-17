@@ -19,7 +19,9 @@ dnf -y install \
   tmux \
   weechat \
   vcsh \
-  xbacklight
+  xbacklight \
+  xdotool \
+  tree
 # Setup Sway(i3)
 dnf -y install dnf-plugins-core
 dnf -y copr enable dperson/neovim
