@@ -25,9 +25,9 @@ dnf -y install \
 # Setup Sway(i3)
 dnf -y install dnf-plugins-core
 dnf -y copr enable dperson/neovim
+dnf -y copr enable heliocastro/hack-fonts
 cd /usr/share/xsessions
 if [ ! -F sway.desktop ]; then
   ln -s ../wayland-sessions/sway.desktop sway.desktop
 fi
-pip install neovim
-
+pip install neovim hack-fonts
