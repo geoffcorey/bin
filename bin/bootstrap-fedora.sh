@@ -5,6 +5,7 @@ dnf -y install \
   acpi \
   conky \
   git \
+  gitflow \
   cmake \
   ctags \
   jq \
@@ -16,6 +17,8 @@ dnf -y install \
   python2-greenlet-devel \
   ruby \
   sway \
+  i3 \
+  i3lock \
   tmux \
   weechat \
   vcsh \
