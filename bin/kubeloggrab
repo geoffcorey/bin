@@ -1,17 +1,15 @@
 #!/bin/bash
 NAMESPACE=$1
 APP=$2
-LOG_DIR=$3
-TIME_SINCE=$4
+TIME_SINCE=$3
 DATE=`date +"%m.%d.%y-%R"`
 
 
-if [[ -z "$NAMESPACE" ]] || [[ -z $APP ]] || [[ -z $LOG_DIR ]] || [[ -z $TIME_SINCE ]]; then
-  echo "Ensure that namespace (option1), app (option2), location to write the files (option3) and time since (option4) are all set"
+if [[ -z "$NAMESPACE" ]] || [[ -z $APP ]] || [[ -z $TIME_SINCE ]]; then
+  echo "Ensure that namespace (option1), app (option2) and time since (option4) are all set"
   echo "exiting"
   exit 1
 fi
-# for i in `kubectl get pods -n armada --selector=app=armada-api | grep armada-api | awk '{print $1}'`; do kubectl logs $i -n armada --since 2h  >> ~/logs/api.log; done
 #printing cluster-info
 kubectl cluster-info
 
@@ -26,9 +24,7 @@ if [[ $RC != 0 ]]; then
   exit 1
 fi
 
-mkdir -p $LOG_DIR
-
 echo "Downloading logs for the PODS - outputting to $LOG_DIR/${APP}_${NAMESPACE}_${DATE}.log"
 echo "Depending on the time since setting, this may take a few moments"
 
-for i in `kubectl get pods -n $NAMESPACE --selector=app=$APP | grep $APP | awk '{print $1}'`; do kubectl logs $i -n $NAMESPACE --since $TIME_SINCE  >> $LOG_DIR/${APP}_${NAMESPACE}_${DATE}.log; done
+for i in `kubectl get pods -n $NAMESPACE --selector=app=$APP | grep $APP | awk '{print $1}'`; do kubectl logs $i -n $NAMESPACE --since $TIME_SINCE; done
