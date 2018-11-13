@@ -6,6 +6,7 @@ cd ~
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
 source ~/.bashrc
 nvm install node
+npm install -g fx vtop jsbeautify neovim loopback-cli eslint
 # Go
 cd ~
 wget https://storage.googleapis.com/golang/go1.7.3.linux-amd64.tar.gz
