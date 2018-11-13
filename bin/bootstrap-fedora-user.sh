@@ -14,5 +14,4 @@ tar -xzf go1.7.3.linux-amd64.tar.gz
 source ~/.profile
 git config --global user.email "gwcorey@us.ibm.com"
 git config --global user.name "Geoff Corey"
-
-
+curl https://install.meteor.com/ | sh

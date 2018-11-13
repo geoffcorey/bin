@@ -3,3 +3,4 @@ brew install tmux fontconfig jq ncurses openssl python3 freetype gnupg neovim	pa
 pip3 install neovim
 npm install -g fx vtop jsbeautify neovim loopback-cli eslint
 nvim +PlugInstall
+curl https://install.meteor.com/ | sh
