@@ -4,3 +4,5 @@ pip3 install neovim
 npm install -g fx vtop jsbeautify neovim loopback-cli eslint
 nvim +PlugInstall
 curl https://install.meteor.com/ | sh
+brew tap cantino/mcfly https://github.com/cantino/mcfly
+brew install mcfly
