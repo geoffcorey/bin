@@ -33,4 +33,4 @@ cd /usr/share/xsessions
 if [ ! -F sway.desktop ]; then
   ln -s ../wayland-sessions/sway.desktop sway.desktop
 fi
-pip install neovim hack-fonts
+pip install neovim hack-fonts yq

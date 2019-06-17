@@ -10,6 +10,7 @@ brew tap caskroom/fonts
 brew cask install font-hack-nerd-font
 brew install zsh-syntax-highlighting
 brew install zsh-autosuggestions
+brew install python-yq
 git clone https://github.com/bhilburn/powerlevel9k.git ~/powerlevel9k
 mkdir -p ~/src/github.com/razee-io
 git clone https://github.com/razee-io/Kube-cloud-scripts.git ~/src/github.com/razee-io/
