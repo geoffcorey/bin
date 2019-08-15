@@ -3,11 +3,12 @@ brew install tmux fontconfig jq ncurses openssl python3 freetype gnupg neovim	pa
 pip3 install neovim
 npm install -g fx vtop jsbeautify neovim loopback-cli eslint markdownlint npx
 nvim +PlugInstall
-curl https://install.meteor.com/ | sh
-brew tap cantino/mcfly https://github.com/cantino/mcfly
-brew install mcfly
+#curl https://install.meteor.com/ | sh
+#brew tap cantino/mcfly https://github.com/cantino/mcfly
+#brew install mcfly
 brew tap caskroom/fonts
 brew cask install font-hack-nerd-font
+brew cask install alacritty
 brew install zsh-syntax-highlighting
 brew install zsh-autosuggestions
 brew install python-yq
