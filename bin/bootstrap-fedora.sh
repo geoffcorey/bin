@@ -11,17 +11,23 @@ dnf -y install \
 	adobe-source-code-pro-fonts \
 	adobe-source-han-mono-fonts \
   acpi \
+	alacritty \
   cmake \
   ctags \
 	docker-compose \
 	docker \
-  git \
-  gitflow \
+	dunst \
+	exa \
+	feh \
 	ffmpeg \
 	fontawesome-fonts \
+  git \
+  gitflow \
+	gpick \
   i3 \
   i3lock \
   jq \
+	keybase \
 	liveusb-creator \
 	motion \
   mr \
@@ -29,6 +35,7 @@ dnf -y install \
   ngrep \
   openssl-devel \
 	openvpn \
+	picom \
 	procps \
 	python3-neovim \
   python-pip \
