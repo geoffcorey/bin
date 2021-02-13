@@ -26,6 +26,7 @@ dnf -y install \
 	gpick \
   i3 \
   i3lock \
+	i3blocks \
   jq \
 	keybase \
 	liveusb-creator \
@@ -39,6 +40,7 @@ dnf -y install \
 	procps \
 	python3-neovim \
   python-pip \
+	rofi \
   ruby \
   sway \
 	the_silver_searcher \
@@ -49,3 +51,4 @@ dnf -y install \
   xbacklight \
   xdotool \
 	youtube-dl
+pip install -U kb-manager
